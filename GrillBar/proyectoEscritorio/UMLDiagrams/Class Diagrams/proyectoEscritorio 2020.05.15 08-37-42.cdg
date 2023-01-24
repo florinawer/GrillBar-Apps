@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="proyectoEscritorio">
+  <ClassDiagramComponents>
+    <Class name="Conector_bbdd" package="proyectoescritorio" visibility="public" xPosition="39.0" yPosition="1007.0">
+      <Fields>
+        <Field name="conexion" type="Connection" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="obtenerStock" returnType="ArrayList&lt;productoStock&gt;" visibility="public"/>
+        <Method name="dbToGuiDateFormat" returnType="String" visibility="public">
+          <Argument type="String" name="dbDate"/>
+        </Method>
+        <Method name="actualizarBBDD" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;productoStock&gt;" name="productosActualizados"/>
+        </Method>
+        <Method name="guiToDbDateFormat" returnType="String" visibility="public">
+          <Argument type="String" name="dbDate"/>
+        </Method>
+        <Method name="obtenerIdProducto" returnType="int" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getCantidadActual" returnType="int" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="obtener_ordenes" returnType="ArrayList&lt;Productos&gt;" visibility="public"/>
+        <Method name="obtener_ordenes_back_up" returnType="ArrayList&lt;Productos&gt;" visibility="public"/>
+        <Method name="borrar_reserva" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="eliminarBackUp" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="resetAuto" returnType="void" visibility="public"/>
+        <Method name="comprobar_empleado" returnType="boolean" visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="codigo"/>
+        </Method>
+        <Method name="close" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="FondoPanel" package="proyectoescritorio" visibility="public" xPosition="1691.0" yPosition="216.0">
+      <Fields>
+        <Field name="imagen" type="Image" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="paint" returnType="void" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HistorialDia" package="proyectoescritorio" visibility="public" xPosition="578.0" yPosition="681.0">
+      <Fields>
+        <Field name="enlaceHome" type="Home" visibility="private"/>
+        <Field name="info" type="String[][]" visibility="private"/>
+        <Field name="button_back" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="tabla_ingredientes" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Home" name="home"/>
+          <Argument type="ArrayList&lt;Productos&gt;" name="ordenes"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="verHistorial" returnType="void" visibility="private">
+          <Argument type="ArrayList&lt;Productos&gt;" name="ordenes"/>
+        </Method>
+        <Method name="button_backActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Home" package="proyectoescritorio" visibility="public" xPosition="1434.0" yPosition="662.0">
+      <Fields>
+        <Field name="fondo" type="FondoPanel" visibility="package"/>
+        <Field name="newLive" type="LiveForm" visibility="public"/>
+        <Field name="butonGoLive" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buton_historial" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buton_stock" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="label_logo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="panel_home" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="buton_stockActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="butonGoLiveActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buton_historialActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LiveForm" package="proyectoescritorio" visibility="public" xPosition="1449.0" yPosition="1334.0">
+      <Fields>
+        <Field name="enlaceHome" type="Home" visibility="private"/>
+        <Field name="paneles" type="ArrayList&lt;Panel_mesa&gt;" visibility="private"/>
+        <Field name="productos_CSV" type="ArrayList&lt;Productos&gt;" visibility="private"/>
+        <Field name="salida" type="int" visibility="private"/>
+        <Field name="posicion" type="int" visibility="public"/>
+        <Field name="panel_temporal" type="Panel_mesa" visibility="public"/>
+        <Field name="button_back" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_back_up_mesas" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_cerrar_dia" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_start_hilos" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_stop_hilos" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panel_encima_scroll" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panel_encima_scrolll" type="javax.swing.JScrollPane" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Home" name="home"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getProductos_CSV" returnType="ArrayList&lt;Productos&gt;" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="ejecutar" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Productos&gt;" name="ordenes"/>
+        </Method>
+        <Method name="eliminar_duplicados" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Productos&gt;" name="ordenes"/>
+        </Method>
+        <Method name="button_backActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button_cerrar_diaActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="comprobar_update" returnType="void" visibility="public"/>
+        <Method name="button_start_hilosActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button_stop_hilosActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button_back_up_mesasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Log_in" package="proyectoescritorio" visibility="public" xPosition="636.0" yPosition="121.0">
+      <Fields>
+        <Field name="fondoPanel" type="FondoPanel" visibility="package"/>
+        <Field name="button_acceder_home" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_incorrect_login" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_logo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="text_area_id_empleado" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="text_area_password" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button_acceder_homeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Panel_mesa" package="proyectoescritorio" visibility="public" xPosition="2283.0" yPosition="1642.0">
+      <Fields>
+        <Field name="completado" type="boolean" visibility="package"/>
+        <Field name="minutos" type="int" visibility="package"/>
+        <Field name="segundos" type="int" visibility="package"/>
+        <Field name="horas" type="int" visibility="package"/>
+        <Field name="platos" type="ArrayList&lt;Plato_card&gt;" visibility="private"/>
+        <Field name="button_aparcar_orden" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_completar_orden" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_imprimir_orden" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_llamar_camarero" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="label_atiende" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_numero_mesa" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_open_for_time" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelasd" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="panel1" type="java.awt.Panel" visibility="private"/>
+        <Field name="panel_bottom" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panel_encima_scroll3" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="isCompletado" returnType="boolean" visibility="public"/>
+        <Method name="setCompletado" returnType="void" visibility="public">
+          <Argument type="boolean" name="completado"/>
+        </Method>
+        <Method name="capturar_info" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Productos&gt;" name="ordenes"/>
+        </Method>
+        <Method name="addPlatos" returnType="void" visibility="public"/>
+        <Method name="updateTimeOpenFor" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button_imprimir_ordenActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button_completar_ordenActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Plato_card" package="proyectoescritorio" visibility="public" xPosition="3072.0" yPosition="1670.0">
+      <Fields>
+        <Field name="numeroColor" type="int" visibility="package"/>
+        <Field name="minutos" type="int" visibility="package"/>
+        <Field name="segundos" type="int" visibility="package"/>
+        <Field name="horas" type="int" visibility="package"/>
+        <Field name="salida" type="int" visibility="package"/>
+        <Field name="punto" type="String" visibility="package"/>
+        <Field name="aprox_punto" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="label_campanita" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_nombre_plato" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_numero_platos" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_recomendacion_cook_tiempo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_side_butter_cook" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_temperatura_cook" type="java.awt.Label" visibility="private"/>
+        <Field name="label_texto_prep" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_tiempo_enmarcha" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="panel_cambio_color_click" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="side"/>
+          <Argument type="String" name="punto"/>
+          <Argument type="String" name="salsa"/>
+          <Argument type="int" name="numero_repeticiones"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRecomendacion" returnType="String" visibility="public">
+          <Argument type="String" name="punto"/>
+        </Method>
+        <Method name="getRecomendacionMinutos" returnType="String" visibility="public">
+          <Argument type="String" name="punto"/>
+        </Method>
+        <Method name="getSideButter" returnType="String" visibility="public">
+          <Argument type="String" name="side"/>
+          <Argument type="String" name="salsa"/>
+        </Method>
+        <Method name="updateCampanilla" returnType="void" visibility="public"/>
+        <Method name="updateTimeOpenFor" returnType="void" visibility="public"/>
+        <Method name="actualizarHora" returnType="void" visibility="public"/>
+        <Method name="arrancar_hilos" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="panel_cambio_color_clickMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Productos" package="proyectoescritorio" visibility="public" xPosition="64.0" yPosition="1627.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="salsa" type="String" visibility="private"/>
+        <Field name="punto" type="String" visibility="private"/>
+        <Field name="side" type="String" visibility="private"/>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="numero_platos_repetidos" type="int" visibility="private"/>
+        <Field name="atiende" type="String" visibility="private"/>
+        <Field name="hora_pedido" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numero"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="punto"/>
+          <Argument type="String" name="side"/>
+          <Argument type="String" name="salsa"/>
+          <Argument type="String" name="atiende"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getArray" returnType="String[]" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="uniqueString" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="setHora_pedido" returnType="void" visibility="public"/>
+        <Method name="getNumero_platos_repetidos" returnType="int" visibility="public"/>
+        <Method name="getHora_pedido" returnType="String" visibility="public"/>
+        <Method name="getAtiende" returnType="String" visibility="public"/>
+        <Method name="setAtiende" returnType="void" visibility="public">
+          <Argument type="String" name="atiende"/>
+        </Method>
+        <Method name="setNumero_platos_repetidos" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getSalsa" returnType="String" visibility="public"/>
+        <Method name="setSalsa" returnType="void" visibility="public">
+          <Argument type="String" name="salsa"/>
+        </Method>
+        <Method name="getPunto" returnType="String" visibility="public"/>
+        <Method name="setPunto" returnType="void" visibility="public">
+          <Argument type="String" name="punto"/>
+        </Method>
+        <Method name="getSide" returnType="String" visibility="public"/>
+        <Method name="setSide" returnType="void" visibility="public">
+          <Argument type="String" name="side"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProductosObject" package="proyectoescritorio" visibility="public" xPosition="173.0" yPosition="2435.0">
+      <Fields>
+        <Field name="productos" type="ArrayList&lt;Productos&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;Productos&gt;" name="productos"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getProductos" returnType="ArrayList&lt;Productos&gt;" visibility="public"/>
+        <Method name="setProductos" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Productos&gt;" name="productos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="productoStock" package="proyectoescritorio" visibility="public" xPosition="64.0" yPosition="350.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="cantidad" type="int" visibility="private"/>
+        <Field name="fecha_Cad" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="cantidad"/>
+          <Argument type="String" name="fecha_Cad"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getCantidad" returnType="int" visibility="public"/>
+        <Method name="setCantidad" returnType="void" visibility="public">
+          <Argument type="int" name="cantidad"/>
+        </Method>
+        <Method name="getFecha_Cad" returnType="String" visibility="public"/>
+        <Method name="setFecha_Cad" returnType="void" visibility="public">
+          <Argument type="String" name="fecha_Cad"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProyectoEscritorio" package="proyectoescritorio" visibility="public" xPosition="134.0" yPosition="94.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="StockForm" package="proyectoescritorio" visibility="public" xPosition="2344.0" yPosition="596.0">
+      <Fields>
+        <Field name="enlaceHome" type="Home" visibility="private"/>
+        <Field name="info" type="String[][]" visibility="package"/>
+        <Field name="info2" type="String[][]" visibility="package"/>
+        <Field name="button_anyadir_pedido" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_back" type="javax.swing.JButton" visibility="private"/>
+        <Field name="button_validar_pedido" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="label_confirmacion_stock" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="label_stock_actual_actualizado" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="tabla_ingredientes" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Home" name="home"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="button_backActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="button_validar_pedidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="isInteger" returnType="boolean" visibility="public">
+          <Argument type="String" name="currentInt"/>
+        </Method>
+        <Method name="dateIsValid" returnType="boolean" visibility="public">
+          <Argument type="String" name="dateStr"/>
+        </Method>
+        <Method name="button_anyadir_pedidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="obtenerStock" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="panel_temporal" source="proyectoescritorio.LiveForm" target="proyectoescritorio.Panel_mesa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="enlaceHome" source="proyectoescritorio.LiveForm" target="proyectoescritorio.Home" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectoescritorio.HistorialDia" target="proyectoescritorio.Productos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectoescritorio.LiveForm" target="proyectoescritorio.Productos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fondoPanel" source="proyectoescritorio.Log_in" target="proyectoescritorio.FondoPanel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectoescritorio.ProductosObject" target="proyectoescritorio.Productos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="productos_CSV" source="proyectoescritorio.LiveForm" target="proyectoescritorio.Productos" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Productos&gt;"/>
+    <HasRelation name="fondo" source="proyectoescritorio.Home" target="proyectoescritorio.FondoPanel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="enlaceHome" source="proyectoescritorio.StockForm" target="proyectoescritorio.Home" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="platos" source="proyectoescritorio.Panel_mesa" target="proyectoescritorio.Plato_card" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Plato_card&gt;"/>
+    <HasRelation name="enlaceHome" source="proyectoescritorio.HistorialDia" target="proyectoescritorio.Home" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectoescritorio.Conector_bbdd" target="proyectoescritorio.productoStock" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="productos" source="proyectoescritorio.ProductosObject" target="proyectoescritorio.Productos" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Productos&gt;"/>
+    <HasRelation name="newLive" source="proyectoescritorio.Home" target="proyectoescritorio.LiveForm" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectoescritorio.Panel_mesa" target="proyectoescritorio.Productos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="proyectoescritorio.Conector_bbdd" target="proyectoescritorio.Productos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="paneles" source="proyectoescritorio.LiveForm" target="proyectoescritorio.Panel_mesa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Panel_mesa&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">flops</string>
+
+    <array name="nombres_platos">
+        <item>TOMAHAWK</item>
+        <item>FLAT IRON</item>
+        <item>SUNDAY BEEF</item>
+        <item>LAMB CHOPS</item>
+        <item>SOLOMILLO TERNERA</item>
+        <item>ENGLISH BREAKFAST</item>
+        <item>COSTILLAR GRILL</item>
+        <item>CHURRASCO</item>
+        <item>PINT SHOP BURGER</item>
+        <item>SALCHICHAS</item>
+        <item>BEEF BURGER</item>
+        <item>CHULETAS CORDERO</item>
+    </array>
+
+    <array name="side_name">
+        <item>VEGGIE</item>
+        <item>FRIES</item>
+        <item>MASH</item>
+        <item>SALAD</item>
+    </array>
+</resources>
